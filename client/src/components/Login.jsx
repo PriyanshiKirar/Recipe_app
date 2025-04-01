@@ -2,43 +2,36 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../config/axiosInstance";
 import { toast } from "react-toastify";
-import { useAuth } from "../context/AUth"; // ✅ Fixed import (was "AUth")
+import { useAuth } from "../context/Auth"; // ✅ Fixed import
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); // ✅ Ensure login function exists
+  const { login } = useAuth(); 
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false); // ✅ Loading state
+  const [loading, setLoading] = useState(false);
 
-  // ✅ Handle Input Change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      console.log("Sending login request:", formData);
       const res = await axios.post("/users/login", formData);
-
-      console.log("Response received:", res?.data); // ✅ Debugging
 
       if (!res?.data?.user || !res?.data?.token) {
         throw new Error("Invalid login response");
       }
 
       const { user, token } = res.data;
-      login(user, token); // ✅ Ensure login function accepts user & token
+      login(user, token);
       localStorage.setItem("token", token);
 
       toast.success("Logged in successfully");
       navigate("/profile");
     } catch (error) {
-      console.error("Login error:", error);
-
       toast.error(
         error.response?.data?.error ||
         error.response?.data?.message ||
@@ -50,13 +43,13 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#FFF5E1]">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-xl">
-        <h2 className="text-3xl font-bold text-center text-[#D35400] mb-4">
-          Welcome Back to Flavor Fusion
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-100 to-green-300 px-4">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-10">
+        <h2 className="text-3xl font-bold text-center text-green-700 mb-2">
+          Welcome Back!
         </h2>
-        <p className="text-center text-[#5A3E36] mb-6">
-          Sign in and continue your culinary journey with AI-powered recipes!
+        <p className="text-center text-gray-600 mb-6">
+          Sign in and continue your culinary journey.
         </p>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <input
@@ -65,7 +58,7 @@ const Login = () => {
             placeholder="Email address"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D35400]"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <input
@@ -74,21 +67,21 @@ const Login = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D35400]"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
           <button
             type="submit"
-            className="w-full bg-[#D35400] text-white py-2 px-4 rounded-lg hover:bg-[#A04000] transition"
+            className="w-full bg-green-700 text-white py-2 px-4 rounded-lg hover:bg-green-800 transition-shadow shadow-md"
             disabled={loading}
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-        <p className="mt-4 text-center text-[#5A3E36]">
+        <p className="mt-4 text-center text-gray-600">
           Don't have an account?{" "}
           <span
-            className="text-[#D35400] cursor-pointer underline"
+            className="text-green-700 cursor-pointer underline"
             onClick={() => navigate("/signup")}
           >
             Sign Up

@@ -1,30 +1,39 @@
-
-
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-
   return (
-    <div className='flex h-[90vh] relative items-center justify-center overflow-hidden bg-[#FFF5E1]'>
-      <div className='w-[50%] h-[80%] flex items-left justify-end py-[3%] px-20 flex-col gap-4'>
-        <h1 className='text-[100px] text-shadow-2xl text-[#D35400] w-[80%] leading-[100px] font-bold'>Flavor Fusion</h1>
-        <h2 className='text-3xl w-[80%] mt-[2%] font-bold text-[#8B4513]'>Crafting Culinary Delights, One Recipe at a Time.</h2>
-        <p className='w-[80%] text-[#5A3E36] text-lg'>Discover new flavors and elevate your cooking experience with our AI-powered recipe generator. Let your taste buds explore a world of delicious possibilities!</p>
-        <button 
-          className='py-3 mt-[2.5%] w-[20%] rounded-xl text-white bg-[#D35400] shadow-lg hover:bg-[#A04000] transition'
-          onClick={() => navigate('/signup')}
+    <div className="w-full flex flex-col md:flex-row justify-center md:justify-between items-center h-auto md:h-screen px-4 sm:px-6 md:px-16 py-8 sm:py-10 md:py-0 bg-gradient-to-br from-green-100 to-green-300">
+      {/* Text Section */}
+      <div className="w-full md:w-1/2 text-center md:text-left">
+        <h1 className="text-3xl sm:text-4xl md:text-7xl font-extrabold text-green-800 leading-tight">
+          Generate Delicious Recipes Instantly
+        </h1>
+        <p className="text-zinc-600 mt-4 sm:mt-5 mb-6 sm:mb-8 text-base sm:text-lg md:text-xl">
+          Discover unique and tasty recipes with just one click. Enter your favorite ingredients and let us do the magic!
+        </p>
+        <button
+          onClick={() => navigate("/signup")}
+          className="bg-green-700 text-white py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-lg font-semibold hover:bg-green-800 duration-200 rounded-lg shadow-lg"
         >
-          Get Started
+          Generate Recipe &nbsp; &#8594;
         </button>
       </div>
 
-      <div className='relative w-[50%] h-[100%] flex items-center justify-center'>
-        <img className='scale-[0.8] left-[-20%] z-[1] top-[30%] absolute' src='../b82a39c07f7abaca8eb5e58660db33dc-removebg-preview.png' alt='' />
-        <img className='scale-[0.8] left-[30%] z-[1] top-[20%] absolute' src='../6d7d886ae4665f1e349191526ffac45f-removebg-preview.png' alt='' />
-        <img className='scale-[1.2] left-[0%] z-[0] top-[-2%] absolute' src='../e6b52f005370f32dabbf530ebe62851e-removebg-preview.png' alt='' />
-        <img className='scale-[0.7] left-[43%] z-[1] top-[15%] absolute' src='../05eb8e7ded3db5a397ef8c6078e57e48-removebg-preview.png' alt='' />
+      {/* Image Section */}
+      <div className="w-full md:w-1/2 flex justify-center mt-6 sm:mt-8 md:mt-0 relative">
+        <img
+          className="w-[90%] sm:w-[80%] md:w-full max-w-xs sm:max-w-sm md:max-w-lg drop-shadow-lg rounded-xl"
+          src="https://www.pngall.com/wp-content/uploads/8/Cooking-Recipe-PNG-Clipart.png"
+          alt="Cooking Recipe"
+        />
+        <div className="absolute top-4 sm:top-10 left-3 sm:left-5 bg-white p-2 sm:p-4 rounded-lg shadow-md hidden sm:block">
+          <p className="text-green-700 font-semibold text-xs sm:text-sm">Fresh & Healthy</p>
+        </div>
+        <div className="absolute bottom-4 sm:bottom-10 right-3 sm:right-5 bg-white p-2 sm:p-4 rounded-lg shadow-md hidden sm:block">
+          <p className="text-green-700 font-semibold text-xs sm:text-sm">Easy & Quick</p>
+        </div>
       </div>
     </div>
   );

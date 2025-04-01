@@ -10,11 +10,12 @@ export const generateRecipe = async (ingredients, preferences, cuisine) => {
 
   try {
     //  Corrected API Call
+    // Sending the Request to Gemini API
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: prompt }] }],
     });
 
-    console.log("Full API Response:", JSON.stringify(result, null, 2));
+    // console.log("Full API Response:", JSON.stringify(result, null, 2));
 
     //  Ensure Response Has Candidates
     if (
