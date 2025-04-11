@@ -5,9 +5,9 @@ import cookieParser from "cookie-parser";
 import userRoute from "../src/routes/userRoute.js";
 import recipeRoutes from "../src/routes/recipeRoutes.js";
 import errorHandler from "./middlewares/errorMiddleware.js"; // Global error handler
-import helmet from 'helmet'
+import helmet from "helmet";
 const app = express();
-import rateLimit from 'express-rate-limit';
+import rateLimit from "express-rate-limit";
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -29,7 +29,6 @@ app.use(
   })
 );
 app.use(cookieParser());
-
 
 app.use("/users", userRoute);
 app.use("/api/recipes", recipeRoutes);
