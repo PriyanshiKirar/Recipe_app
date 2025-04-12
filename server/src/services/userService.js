@@ -1,4 +1,3 @@
-
 import userModel from "../models/userModel.js";
 
 export const createUser = async ({ username, email, password }) => {
@@ -20,7 +19,7 @@ export const createUser = async ({ username, email, password }) => {
   await user.save();
   delete user._doc.password;
 
-  return user; 
+  return user;
 };
 
 export const loginUser = async ({ email, password }) => {
@@ -37,5 +36,5 @@ export const loginUser = async ({ email, password }) => {
   }
 
   delete user._doc.password;
-  return user; 
+  return user;
 };
