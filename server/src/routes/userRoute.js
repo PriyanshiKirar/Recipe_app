@@ -9,15 +9,13 @@ router.post(
   userController.createUserController
 );
 
-router.post('/login',
+router.post(
+  "/login",
   userMiddleware.loginUserMiddleware,
   userController.loginUserController
-)
-router.get('/profile',userMiddleware.authUser,(req,res)=>{
-  res.json(req.user)
+);
+router.get("/profile", userMiddleware.authUser, (req, res) => {
+  res.json(req.user);
 });
-router.get('/logout',
-  userMiddleware.authUser,
-  userController.logoutController
-)
+router.get("/logout", userMiddleware.authUser, userController.logoutController);
 export default router;
