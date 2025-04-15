@@ -1,9 +1,8 @@
-
 import { body } from "express-validator";
 import redis from "../services/redisService.js";
 import User from "../models/userModel.js";
-import config from '../config/config.js'
-import jwt from 'jsonwebtoken'
+import config from "../config/config.js";
+import jwt from "jsonwebtoken";
 export const registerMiddleware = [
   body("username")
     .isString()
@@ -29,24 +28,27 @@ export const loginUserMiddleware = [
     .withMessage("Password must be at least 5 characters long"),
 ];
 
-
 export const authUser = async (req, res, next) => {
   try {
     const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-      return res.status(401).json({ message: "Unauthorized - No token provided" });
+      return res
+        .status(401)
+        .json({ message: "Unauthorized - No token provided" });
     }
 
     // Check if token is blacklisted
     const isTokenBlacklisted = await redis.get(`blacklist:${token}`);
     if (isTokenBlacklisted) {
-      return res.status(401).json({ message: "Unauthorized - Blacklisted token" });
+      return res
+        .status(401)
+        .json({ message: "Unauthorized - Blacklisted token" });
     }
 
     // Verify token
-    const decoded = jwt.verify(token,config.JWT_SECRET);
-    
+    const decoded = jwt.verify(token, config.JWT_SECRET);
+
     // Check Redis for cached user data
     let user = await redis.get(`user:${decoded._id}`);
 
@@ -55,13 +57,15 @@ export const authUser = async (req, res, next) => {
     } else {
       user = await User.findById(decoded._id);
       if (!user) {
-        return res.status(401).json({ message: "Unauthorized - User not found" });
+        return res
+          .status(401)
+          .json({ message: "Unauthorized - User not found" });
       }
 
       // Exclude password before caching
       const { password, ...userData } = user.toObject();
       await redis.set(`user:${decoded._id}`, JSON.stringify(userData));
-      
+
       user = userData;
     }
 
