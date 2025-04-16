@@ -6,7 +6,7 @@ import { useAuth } from "../context/Auth"; // ✅ Fixed import
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); 
+  const { login } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
 
@@ -34,8 +34,8 @@ const Login = () => {
     } catch (error) {
       toast.error(
         error.response?.data?.error ||
-        error.response?.data?.message ||
-        "Login failed. Please try again."
+          error.response?.data?.message ||
+          "Login failed. Please try again."
       );
     } finally {
       setLoading(false);
