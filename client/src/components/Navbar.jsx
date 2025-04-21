@@ -28,20 +28,29 @@ const Navbar = () => {
     <nav className="bg-gradient-to-r from-green-700 to-green-500 text-white shadow-md p-4 fixed w-full top-0 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo */}
-        <h1 className="text-2xl font-bold cursor-pointer" onClick={() => navigate("/")}>
+        <h1
+          className="text-2xl font-bold cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           Recipe AI
         </h1>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 items-center">
           <li>
-            <button onClick={() => navigate("/profile")} className="hover:text-gray-300">
+            <button
+              onClick={() => navigate("/profile")}
+              className="hover:text-gray-300"
+            >
               Home
             </button>
           </li>
           <li>
-            <button onClick={() => navigate("/recipes")} className="hover:text-gray-300">
-             About
+            <button
+              onClick={() => navigate("/recipes")}
+              className="hover:text-gray-300"
+            >
+              About
             </button>
           </li>
           {/* <li>
@@ -92,22 +101,34 @@ const Navbar = () => {
         <div className="md:hidden bg-green-600 py-4 text-center">
           <ul className="space-y-4">
             <li>
-              <button onClick={() => navigate("/profile")} className="block w-full hover:text-gray-300">
+              <button
+                onClick={() => navigate("/profile")}
+                className="block w-full hover:text-gray-300"
+              >
                 Home
               </button>
             </li>
             <li>
-              <button onClick={() => navigate("/recipes")} className="block w-full hover:text-gray-300">
+              <button
+                onClick={() => navigate("/recipes")}
+                className="block w-full hover:text-gray-300"
+              >
                 Recipes
               </button>
             </li>
             <li>
-              <button onClick={() => navigate("/saved")} className="block w-full hover:text-gray-300">
+              <button
+                onClick={() => navigate("/saved")}
+                className="block w-full hover:text-gray-300"
+              >
                 Saved
               </button>
             </li>
             <li>
-              <button onClick={handleLogout} className="block w-full text-red-400 hover:text-red-500">
+              <button
+                onClick={handleLogout}
+                className="block w-full text-red-400 hover:text-red-500"
+              >
                 Logout
               </button>
             </li>
