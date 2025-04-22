@@ -11,7 +11,8 @@ const Home = () => {
           Generate Delicious Recipes Instantly
         </h1>
         <p className="text-zinc-600 mt-4 sm:mt-5 mb-6 sm:mb-8 text-base sm:text-lg md:text-xl">
-          Discover unique and tasty recipes with just one click. Enter your favorite ingredients and let us do the magic!
+          Discover unique and tasty recipes with just one click. Enter your
+          favorite ingredients and let us do the magic!
         </p>
         <button
           onClick={() => navigate("/signup")}
@@ -29,10 +30,14 @@ const Home = () => {
           alt="Cooking Recipe"
         />
         <div className="absolute top-4 sm:top-10 left-3 sm:left-5 bg-white p-2 sm:p-4 rounded-lg shadow-md hidden sm:block">
-          <p className="text-green-700 font-semibold text-xs sm:text-sm">Fresh & Healthy</p>
+          <p className="text-green-700 font-semibold text-xs sm:text-sm">
+            Fresh & Healthy
+          </p>
         </div>
         <div className="absolute bottom-4 sm:bottom-10 right-3 sm:right-5 bg-white p-2 sm:p-4 rounded-lg shadow-md hidden sm:block">
-          <p className="text-green-700 font-semibold text-xs sm:text-sm">Easy & Quick</p>
+          <p className="text-green-700 font-semibold text-xs sm:text-sm">
+            Easy & Quick
+          </p>
         </div>
       </div>
     </div>
