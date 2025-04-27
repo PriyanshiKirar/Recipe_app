@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Recipes from "./components/Recipe"; 
+import Recipes from "./components/Recipe";
 import SavedRecipesPage from "./components/Saved";
 import Welcome from "./components/Welcome";
 import Login from "./components/Login";
@@ -12,7 +12,6 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
@@ -29,7 +28,7 @@ function App() {
             path="/saved"
             element={
               <ProtectedRoute>
-               <SavedRecipesPage/>
+                <SavedRecipesPage />
               </ProtectedRoute>
             }
           />{" "}
