@@ -5,7 +5,6 @@ export const generateRecipeHandler = async (req, res, next) => {
     const { ingredients, preferences, cuisine } = req.body;
     // console.log(" Request Body:", req.body);
 
-    
     if (!Array.isArray(ingredients) || ingredients.length === 0) {
       return res.status(400).json({
         success: false,
@@ -23,7 +22,7 @@ export const generateRecipeHandler = async (req, res, next) => {
     return res.json({ success: true, recipe });
   } catch (err) {
     console.error(" Error in generateRecipeHandler:", err.message);
-    next(err); 
+    next(err);
   }
 };
 
@@ -53,22 +52,18 @@ export const saveRecipe = async (req, res) => {
     });
     await newRecipe.save();
 
-    return res
-      .status(201)
-      .json({
-        success: true,
-        message: "Recipe saved successfully.",
-        recipe: newRecipe,
-      });
+    return res.status(201).json({
+      success: true,
+      message: "Recipe saved successfully.",
+      recipe: newRecipe,
+    });
   } catch (err) {
     console.error(" Error in saveRecipe:", err.message);
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to save recipe.",
-        error: err.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to save recipe.",
+      error: err.message,
+    });
   }
 };
 
