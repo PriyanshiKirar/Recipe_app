@@ -30,7 +30,7 @@ export const generateRecipe = async (ingredients, preferences, cuisine) => {
       result.response.candidates[0]?.content?.parts?.[0]?.text?.trim();
     if (!responseText) throw new Error("Empty response from Gemini API");
 
-    //  Remove JSON Artifacts
+    //  Remove JSON Artifact
     const cleanedResponse = responseText.replace(/```json|```/g, "").trim();
 
     //  Validate & Parse JSON Response
