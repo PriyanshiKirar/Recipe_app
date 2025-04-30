@@ -25,7 +25,7 @@ export const generateRecipe = async (ingredients, preferences, cuisine) => {
       throw new Error("Invalid response from Gemini API");
     }
 
-    //  Extract & Clean Response Text
+    //  Extract & Clean Response Texts
     const responseText =
       result.response.candidates[0]?.content?.parts?.[0]?.text?.trim();
     if (!responseText) throw new Error("Empty response from Gemini API");
