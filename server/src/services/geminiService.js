@@ -33,7 +33,7 @@ export const generateRecipe = async (ingredients, preferences, cuisine) => {
     //  Remove JSON Artifact
     const cleanedResponse = responseText.replace(/```json|```/g, "").trim();
 
-    //  Validate & Parse JSON Response
+    //  Validate & Parse JSON Respons
     try {
       return JSON.parse(cleanedResponse);
     } catch (error) {
