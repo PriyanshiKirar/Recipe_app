@@ -17,7 +17,7 @@ export const generateRecipe = async (ingredients, preferences, cuisine) => {
 
     // console.log("Full API Response:", JSON.stringify(result, null, 2));
 
-    //  Ensure Response Has Candidates
+    //  Ensure Response Has Candidate
     if (
       !result?.response?.candidates ||
       result.response.candidates.length === 0
