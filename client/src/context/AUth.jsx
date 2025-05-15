@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
     localStorage.setItem("token", token);
-    fetchRecipes(); // Fetch recipes after login
+    fetchRecipes(); // Fetchs recipes after login
   };
 
   // ✅ Add logout function
